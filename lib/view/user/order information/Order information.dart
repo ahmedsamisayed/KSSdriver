@@ -103,7 +103,7 @@ class _OrderInformationScreenState extends State<OrderInformationScreen> {
 
     @override
     Widget build(BuildContext context) {
-      SizeConfig();
+      SizeConfig().init(context);
       return WillPopScope(
           onWillPop: () async {
         final shouldPop = await showDialog<bool>(

@@ -71,6 +71,7 @@ class _DriverMapScreenState extends State<DriverMapScreen> {
             // ignore: prefer_const_constructors
             margin: EdgeInsets.only(right: 10, left: 280, bottom: 600),
             child: FloatingActionButton(
+                heroTag: "btn1",
               onPressed: () {
                 Navigator.of(context).pushNamed('order driver Screen');
               },

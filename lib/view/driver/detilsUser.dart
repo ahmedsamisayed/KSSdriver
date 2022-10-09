@@ -76,6 +76,7 @@ Widget Details(String name, String Adress) {
             top: 10,
             left: 10,
             child: FloatingActionButton(
+                heroTag: "btn2",
               onPressed: () {},
               backgroundColor: Colors.white,
               child: Icon(

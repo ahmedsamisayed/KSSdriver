@@ -57,9 +57,9 @@ class MyApp extends StatelessWidget {
         'UserMapScreen': (context) {
           return UserMapScreen();
         },
-        'onbording': (context) {
-          return Onbording();
-        },
+        // 'onbording': (context) {
+        //   return Onbording();
+        //},
         'Login Screen': (context) {
           return LoginScreen();
         },

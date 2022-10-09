@@ -29,7 +29,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig();
+    SizeConfig().init(context);
     return Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(

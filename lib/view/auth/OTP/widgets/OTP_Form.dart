@@ -36,7 +36,7 @@ class _OtpFormState extends State<OtpForm> {
     super.initState();
     telephony.listenIncomingSms(
         onNewMessage: (SmsMessage message) {
-          if (message.address == 'kss_driver') {
+          if (message.address == 'kss') {
             setOTP(message.body ?? '');
           }
           print(message.body);
@@ -153,6 +153,13 @@ class _OtpFormState extends State<OtpForm> {
           CustomMaterialButtom(
               text: "تأكيد",
               press: () {
+                setState(() {
+
+                });
+
+                String finalOTP = '${otp1?.text}${otp2?.text}${otp3?.text}${otp4?.text}';
+
+                print(finalOTP);
 
               }),
         ],

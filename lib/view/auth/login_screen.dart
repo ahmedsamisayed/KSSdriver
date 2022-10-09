@@ -30,9 +30,11 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isObscure = false;
 
 
+
+
   @override
   Widget build(BuildContext context) {
-    SizeConfig();
+    SizeConfig().init(context);
     return WillPopScope(
         onWillPop: () async {
       final shouldPop = await showDialog<bool>(
@@ -54,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: ListView(children: [
                 Container(
                   padding: EdgeInsets.all(70),
-                  height: SizeConfig.screenheight! / 2.5,
+                  height: SizeConfig.screenheight / 2.5,
                   child: Image.asset("lib/assets/images/logo-01.png"),
                 ),
                 CustomTextFieldPhone(
@@ -84,7 +86,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 CustomMaterialButtom(
                     text: "دخول",
                     press: () {
-                      loginUser(phone.text,password.text, context);
+                      Navigator.of(context).pushNamed('order driver Screen');
+                      // loginUser(phone.text,password.text, context);
 
                     }),
               ]),

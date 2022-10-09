@@ -39,7 +39,7 @@ class _HomePageUserState extends State<HomeNavigationUserPage> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig();
+    SizeConfig().init(context);
     return Scaffold(
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),

@@ -23,7 +23,7 @@ class _NewPassScreenState extends State<NewPassScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig();
+    SizeConfig().init(context);
     return Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(

@@ -32,7 +32,7 @@ class _OrderValidiaationfolseScreenState
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig();
+    SizeConfig().init(context);
     return Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(

@@ -46,7 +46,7 @@ class _SubCategoriesCamelState extends State<SubCategoriesCamel> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig();
+    SizeConfig().init(context);
     return WillPopScope(
         onWillPop: () async {
       final shouldPop = await showDialog<bool>(

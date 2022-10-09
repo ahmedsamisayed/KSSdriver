@@ -39,7 +39,7 @@ class _BasketScreenState extends State<BasketScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig();
+    SizeConfig().init(context);
     return WillPopScope(
         onWillPop: () async {
       final shouldPop = await showDialog<bool>(

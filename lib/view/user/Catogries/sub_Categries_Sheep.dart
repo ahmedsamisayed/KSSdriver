@@ -38,7 +38,7 @@ class _SubCategoriesSheepState extends State<SubCategoriesSheep> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig();
+    SizeConfig().init(context);
     return WillPopScope(
         onWillPop: () async {
       final shouldPop = await showDialog<bool>(

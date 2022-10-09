@@ -19,7 +19,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig();
+    SizeConfig().init(context);
     return Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
@@ -41,8 +41,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     text: "إرسال",
                     press: () {
                       if(phone.text.isNotEmpty) {
+                        Navigator.of(context).pushNamed('OTP Screen');
 
-                        ForgetPassword(phone.text,context);
+                        //ForgetPassword(phone.text,context);
                       }else{
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
