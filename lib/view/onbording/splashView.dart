@@ -21,11 +21,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
   StartTimer() async {
     var duration = Duration(seconds: 3);
-    return new Timer(duration, onbording);
+    return new Timer(duration, toLogin);
   }
 
-  onbording() {
-    Navigator.of(context).pushNamed('onbording');
+  toLogin() {
+    Navigator.of(context).pushNamed('Login Screen');
   }
 
   @override

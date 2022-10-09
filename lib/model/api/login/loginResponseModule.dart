@@ -1,25 +1,4 @@
 
-
-
-
-
-import 'UserModule.dart';
-//
-// class LoginResponse {
-//   final token;
-//   User user;
-//
-//   LoginResponse({required this.token,
-//     required this.user
-//   });
-//
-//   factory LoginResponse.fromJson(Map<String, dynamic> json) {
-//     return LoginResponse(
-//         token: json['token'],
-//         user: User.fromJson(json['user']),
-//     );
-//   }
-// }
 class LoginResponse {
   bool? success;
   String? token;

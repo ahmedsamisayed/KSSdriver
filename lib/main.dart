@@ -49,9 +49,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(fontFamily: "Tajawal"),
       home: Scaffold(
           body: // OrderInformationScreen()
-              //SplashScreen()
+              SplashScreen()
 
-          OrderDriverScreen()
+          //OrderDriverScreen()
           ),
       routes: {
         'UserMapScreen': (context) {
