@@ -32,42 +32,45 @@ class CustomTextFieldPhone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          InternationalPhoneNumberInput(
-            countries: ['SD'],
-            maxLength: 9,
-            onInputChanged: (PhoneNumber number) {
-              print(number.phoneNumber);
-            },
-            onInputValidated: (bool value) {
-              print(value);
-            },
-            //  selectorConfig: SelectorConfig(
-            //    selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-            //  ),
-            spaceBetweenSelectorAndTextField: 10,
-            hintText: "رقم الهاتف",
-            ignoreBlank: false,
-            autoValidateMode: AutovalidateMode.disabled,
-            // selectorTextStyle: TextStyle(
-            //     color: myFocusNode.hasFocus ? Primarycolor : Colors.black),
-            initialValue: number,
-            textFieldController: myController,
-            formatInput: false,
-            keyboardType:
-                TextInputType.numberWithOptions(signed: true, decimal: true),
-            onSaved: (PhoneNumber number) {
-              print('On Saved: $number');
+      child: Directionality(
+        textDirection: TextDirection.ltr,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            InternationalPhoneNumberInput(
+              countries: ['SD'],
+              maxLength: 9,
+              onInputChanged: (PhoneNumber number) {
+                print(number.phoneNumber);
+              },
+              onInputValidated: (bool value) {
+                print(value);
+              },
+              //  selectorConfig: SelectorConfig(
+              //    selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+              //  ),
+              spaceBetweenSelectorAndTextField: 10,
+              hintText: "رقم الهاتف",
+              ignoreBlank: false,
+              autoValidateMode: AutovalidateMode.disabled,
+              // selectorTextStyle: TextStyle(
+              //     color: myFocusNode.hasFocus ? Primarycolor : Colors.black),
+              initialValue: number,
+              textFieldController: myController,
+              formatInput: false,
+              keyboardType:
+                  TextInputType.numberWithOptions(signed: true, decimal: true),
+              onSaved: (PhoneNumber number) {
+                print('On Saved: $number');
 
-            },
-          ),
+              },
+            ),
 
-          SizedBox(
-            height: 20,
-          )
-        ],
+            SizedBox(
+              height: 20,
+            )
+          ],
+        ),
       ),
     );
   }

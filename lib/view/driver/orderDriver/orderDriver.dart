@@ -27,6 +27,16 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
                 text: "قائمة الطلبات",
                 alignment: Alignment.center,
               ),
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: InkWell(
+                    onTap: (){
+                      showAlertDialog(context);
+                      },
+                      child: Icon(Icons.logout, color: Colors.black,)),
+                ),
+              ],
             ),
             body: TabBarView(children: [
               Center(
@@ -36,9 +46,9 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
                   child: Column(children: [
                     Container(
-                      height: MediaQuery.of(context).size.height / 1.6,
+                      height: MediaQuery.of(context).size.height / 1.3,
                       child: ListView.builder(
-                          itemCount: 3,
+                          itemCount: 20,
                           itemBuilder: (context, i) {
                             return NewOrderItem("أمنية عبد الحفيظ", "10");
                           }),
@@ -117,4 +127,38 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
           ),
         ),
       );
+  showAlertDialog(BuildContext context) {
+
+    // set up the buttons
+    Widget cancelButton = TextButton(
+      child: Text("لا"),
+      onPressed:  () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget continueButton = TextButton(
+      child: Text("نعم"),
+      onPressed:  () {
+        Navigator.of(context).pushNamed('Login Screen');
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("تسجيل الخروج "),
+      content: Text("هل تود فعلا تسجيل الخروج ؟"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
 }

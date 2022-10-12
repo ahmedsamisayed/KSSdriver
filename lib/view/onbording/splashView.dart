@@ -37,15 +37,18 @@ class _SplashScreenState extends State<SplashScreen> {
 
             child: Container(
               padding: EdgeInsets.all(30.30),
-              // decoration: BoxDecoration(
-              //  image: DecorationImage(
-              // image: AssetImage(
-              //   "lib/assets/images/logo-01.png",
-              // ),
-              // fit: BoxFit.fill)),
+              decoration: BoxDecoration(
+               image: DecorationImage(
+              image: AssetImage(
+                "lib/assets/images/b1.jpg",
+              ),
+              fit: BoxFit.fill)),
               child: Center(
 
-                child: Image.asset("lib/assets/images/logo-01.png"),
+                child: Container(
+                  height: 200,
+                    width: 200,
+                    child: Image.asset("lib/assets/images/white logo-01.png")),
               ),
             ),
           ),

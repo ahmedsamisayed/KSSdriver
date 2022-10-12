@@ -5,6 +5,7 @@ import 'package:kss_driver/view/auth/forgot_password_screen.dart';
 import 'package:kss_driver/view/auth/login_screen.dart';
 import 'package:kss_driver/view/auth/new_password_screen.dart';
 import 'package:kss_driver/view/auth/registration_screen.dart';
+import 'package:kss_driver/view/driver/driveMapCompleted.dart';
 
 import 'package:kss_driver/view/driver/driverMap.dart';
 import 'package:kss_driver/view/driver/orderDriver/orderDriver.dart';
@@ -141,6 +142,9 @@ class MyApp extends StatelessWidget {
         'DriverMapScreen': (context) {
           return DriverMapScreen();
         },
+        'Driver Map Screen Completed': (context) {
+          return DriverMapScreenCompleted();
+        }
       },
     );
   }

@@ -15,9 +15,9 @@ const double CAMERA_ZOOM = 14;
 const double CAMERA_TILT = 80;
 const double CAMERA_BEARING = 30;
 
-class DriverMapScreen extends StatefulWidget {
+class DriverMapScreenCompleted extends StatefulWidget {
   @override
-  _DriverMapScreenState createState() => _DriverMapScreenState();
+  _DriverMapScreenCompletedState createState() => _DriverMapScreenCompletedState();
 }
 
 Completer<GoogleMapController> _controller = Completer();
@@ -35,7 +35,7 @@ void setInitialLocation() {
   destinationLocation = LatLng(15.5983302, 32.5843465);
 }
 
-class _DriverMapScreenState extends State<DriverMapScreen> {
+class _DriverMapScreenCompletedState extends State<DriverMapScreenCompleted> {
   @override
   void initState() {
     super.initState();
@@ -72,14 +72,13 @@ class _DriverMapScreenState extends State<DriverMapScreen> {
                   },
                 ),
               ),
-              Details("أمنية عبد الحفيظ", "الشهيد طه الماحي"),
             ],
           ),
           floatingActionButton: Container(
             // ignore: prefer_const_constructors
             margin: EdgeInsets.only(right: 10, left: 300, bottom: 670),
             child: FloatingActionButton(
-                heroTag: "btn1",
+              heroTag: "btn1",
               onPressed: () {
                 Navigator.of(context).pushNamed('order driver Screen');
               },
@@ -94,14 +93,5 @@ class _DriverMapScreenState extends State<DriverMapScreen> {
         ));
   }
 
-  // void showPinsOnMap() {
-  //   setState(() {
-  //     _markers.add(Marker(
-  //         // ignore: prefer_const_constructors
-  //         markerId: MarkerId('destinationPin'),
-  //         position: destinationLocation,
-  //         //    icon: destinationIcon!,
-  //         icon: BitmapDescriptor.defaultMarker));
-  //   });
-  // }
+
 }

@@ -38,6 +38,9 @@ class NewOrderItem extends StatelessWidget {
                             color: Colors.black,
                             fontSize: 15,
                           ),
+                          SizedBox(
+                            height: 10,
+                          ),
                           CustomText(
                             text: "رقم الطلب :",
                             color: Colors.black,
@@ -57,6 +60,9 @@ class NewOrderItem extends StatelessWidget {
                             text: name,
                             color: Colors.black,
                             fontSize: 15,
+                          ),
+                          SizedBox(
+                            height: 10,
                           ),
                           CustomText(
                             text: OrderNumber,

@@ -160,6 +160,7 @@ class _OtpFormState extends State<OtpForm> {
                 String finalOTP = '${otp1?.text}${otp2?.text}${otp3?.text}${otp4?.text}';
 
                 print(finalOTP);
+                Navigator.of(context).pushNamed('New Pass Screen');
 
               }),
         ],

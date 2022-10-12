@@ -41,36 +41,34 @@ Widget Details(String name, String Adress) {
               ),
             ),
           ),
-          Expanded(
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Column(children: [
-                    CustomListTile(
-                      text: "الاسم",
-                      subtitel: name,
-                      icon: Icons.person,
-                    ),
-                    CustomListTile(
-                      text: "العنوان",
-                      subtitel: Adress,
-                      icon: Icons.place,
-                    ),
-                    SizedBox(
-                      width: 40,
-                    ),
-                    CustomMaterialButtom(
-                      press: () {
-                        //    Navigator.of(context)
-                        //      .pushNamed('Payment');
-                      },
-                      text: "تمت عملية التوصيل ",
-                    )
-                  ]),
-                )
-              ],
-            ),
+          Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Column(children: [
+                  CustomListTile(
+                    text: "الاسم",
+                    subtitel: name,
+                    icon: Icons.person,
+                  ),
+                  CustomListTile(
+                    text: "العنوان",
+                    subtitel: Adress,
+                    icon: Icons.place,
+                  ),
+                  SizedBox(
+                    width: 40,
+                  ),
+                  CustomMaterialButtom(
+                    press: () {
+                      //    Navigator.of(context)
+                      //      .pushNamed('Payment');
+                    },
+                    text: "تمت عملية التوصيل ",
+                  )
+                ]),
+              )
+            ],
           ),
           Positioned(
             top: 10,
