@@ -9,7 +9,7 @@ import '../appConstants.dart';
 
 
 
-Future<LoginResponse> loginUser(String phone,String password, BuildContext context) async {
+Future<LoginResponse> loginDriver(String phone,String password, BuildContext context) async {
   LoginResponse loginResponse = LoginResponse();
   final response = await http.post(
     Uri.parse('${AppConstants.generalUrl}/login'),

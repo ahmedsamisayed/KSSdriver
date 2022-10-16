@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     text: "دخول",
                     press: () {
                       Navigator.of(context).pushNamed('order driver Screen');
-                      // loginUser(phone.text,password.text, context);
+                       loginDriver(phone.text,password.text, context);
 
                     }),
               ]),

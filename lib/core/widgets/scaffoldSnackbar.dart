@@ -14,6 +14,6 @@ showScaffoldSnackBar(String data, BuildContext context){
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
-          content: Text('${data}'),
+          content: Text('${data}', style: TextStyle(color: Colors.black),),
       ));
 }
