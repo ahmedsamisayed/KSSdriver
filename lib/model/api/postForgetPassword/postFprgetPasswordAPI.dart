@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
+import 'package:kss_driver/core/widgets/scaffoldSnackbar.dart';
 import 'package:kss_driver/model/api/postForgetPassword/postForgetPasswordResponse.dart';
 import 'dart:convert';
 import '../appConstants.dart';
@@ -24,38 +25,12 @@ Future PostNewPassword(String newPassword, String confNewPassword, BuildContext 
   );
   resetResponse = ResetPasswordResponse.fromJson(jsonDecode(response.body));
   if (response.statusCode == 200) {
-    ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            duration: const Duration(milliseconds: 2000),
-            backgroundColor: Color(0xffd0c9c0),
-            margin: const EdgeInsets.all(100.0),
-            padding: const EdgeInsets.symmetric(
-              horizontal: 8.0,
-            ),
-            behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            content: Text('تم تعديل كلمة المرور بنجاح')
-        ));
+    showScaffoldSnackBar('تم تعديل كلمة المرور بنجاح', context);
 
     Navigator.of(context).pushNamed('Login Screen');
   }
   else {
-    ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            duration: const Duration(milliseconds: 2000),
-            backgroundColor: Color(0xffd0c9c0),
-            margin: const EdgeInsets.all(100.0),
-            padding: const EdgeInsets.symmetric(
-              horizontal: 8.0,
-            ),
-            behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            content: Text('${resetResponse.message}')
-        ));
+    showScaffoldSnackBar('${resetResponse.message}', context);
     throw Exception('حدثت مشكلة الرجاء المحاولة مرة اخرى');
   }
 }

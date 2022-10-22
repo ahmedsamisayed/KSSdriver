@@ -86,7 +86,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 CustomMaterialButtom(
                     text: "دخول",
                     press: () {
-                      Navigator.of(context).pushNamed('order driver Screen');
                        loginDriver(phone.text,password.text, context);
 
                     }),

@@ -17,7 +17,7 @@ class CheckerForLogout extends StatefulWidget {
 }
 
 class _CheckerForLogoutState extends State<CheckerForLogout> {
-  Future<LogOutResponse> getLogOutResult = logOut();
+  Future<LogOutResponse>? getLogOutResult;
 
   @override
   Widget build(BuildContext context) {

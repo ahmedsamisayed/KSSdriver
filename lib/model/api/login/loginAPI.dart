@@ -29,9 +29,14 @@ Future<LoginResponse> loginDriver(String phone,String password, BuildContext con
     AppConstants.userPhone = loginResponse.user!.phone;
     AppConstants.userName = loginResponse.user!.name;
     AppConstants.userEmail = loginResponse.user!.email;
-    showScaffoldSnackBar('تم تسجيل الدخول بنجاح', context);
+    if (loginResponse.user!.role == 'user') {
+      showScaffoldSnackBar('لا يمكنك الدخول بحساب مستخدم عادي وانت سائق', context);
+    }
+    else {
+      showScaffoldSnackBar('تم تسجيل الدخول بنجاح', context);
+      Navigator.of(context).pushNamed('order driver Screen');
+    }
 
-    Navigator.of(context).pushNamed('order driver Screen');
     return loginResponse;
   }
   else if(response.statusCode == 400) {

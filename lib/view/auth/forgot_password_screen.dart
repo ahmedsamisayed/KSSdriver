@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kss_driver/core/utils/size_config.dart';
+import 'package:kss_driver/core/widgets/scaffoldSnackbar.dart';
 
 import '../../core/widgets/custom_Text_field_phone.dart';
 import '../../core/widgets/custom_buttom.dart';
@@ -41,24 +42,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     text: "إرسال",
                     press: () {
                       if(phone.text.isNotEmpty) {
-                        Navigator.of(context).pushNamed('OTP Screen');
+                        //Navigator.of(context).pushNamed('OTP Screen');
 
-                        //ForgetPassword(phone.text,context);
+                        ForgetPassword(phone.text,context);
                       }else{
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                                duration: const Duration(milliseconds: 2000),
-                                backgroundColor: Color(0xffd0c9c0),
-                                margin: const EdgeInsets.all(100.0),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 8.0,
-                                ),
-                                behavior: SnackBarBehavior.floating,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                content: Text('الرقم غير صحيح')
-                            ));
+                        showScaffoldSnackBar('الرقم غير صحيح', context);
                       }
                       // Navigator.of(context).pushNamed('OTP Screen');
                     }),

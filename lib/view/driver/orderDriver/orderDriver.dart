@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/const.dart';
 import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_text.dart';
+import '../../../model/api/logOut/logOutAPI.dart';
 import 'OldOreder.dart';
 import 'newOrer.dart';
 
@@ -139,7 +140,7 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
     Widget continueButton = TextButton(
       child: Text("نعم"),
       onPressed:  () {
-        Navigator.of(context).pushNamed('Login Screen');
+        logOutDriver(context);
       },
     );
 
