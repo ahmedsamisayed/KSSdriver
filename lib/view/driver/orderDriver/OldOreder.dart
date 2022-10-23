@@ -4,18 +4,23 @@ import 'package:flutter/material.dart';
 import '../../../core/const.dart';
 import '../../../core/utils/size_config.dart';
 import '../../../core/widgets/custom_text.dart';
+import '../../../model/api/appConstants.dart';
 
 class OldOrderItem extends StatelessWidget {
   //const ({ Key? key }) : super(key: key);
   final name;
   final OrderNumber;
   final Adress;
-  OldOrderItem(this.name, this.OrderNumber, this.Adress);
+  final orderLatitude;
+  final orderLongitude;
+  OldOrderItem(this.name, this.OrderNumber, this.Adress, this.orderLatitude, this.orderLongitude);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
+        AppConstants.currentPositionLatitude = orderLatitude;
+        AppConstants.currentPositionLongitude = orderLongitude;
         Navigator.of(context).pushNamed('Driver Map Screen Completed');
       },
       child: Padding(

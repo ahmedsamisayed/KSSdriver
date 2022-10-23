@@ -1,5 +1,6 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:kss_driver/model/api/appConstants.dart';
 
 import '../../../core/const.dart';
 import '../../../core/utils/size_config.dart';
@@ -9,12 +10,23 @@ class NewOrderItem extends StatelessWidget {
   //const ({ Key? key }) : super(key: key);
   final name;
   final OrderNumber;
-  NewOrderItem(this.name, this.OrderNumber);
+  final orderLatitude;
+  final orderLongitude;
+  final orderOwnerNumber;
+  final orderOwnerNumber2;
+  final orderId;
+  NewOrderItem(this.name, this.OrderNumber, this.orderLatitude, this.orderLongitude,
+      this.orderOwnerNumber,
+      this.orderOwnerNumber2,
+      this.orderId);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        AppConstants.currentPositionLatitude = orderLatitude;
+        AppConstants.currentPositionLongitude = orderLongitude;
+        AppConstants.currentOrderId = orderId;
         Navigator.of(context).pushNamed('DriverMapScreen');
       },
       child: Padding(

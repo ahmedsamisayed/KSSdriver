@@ -12,5 +12,9 @@ class AppConstants{
   static String? bokNumber;
   static String? userPhoneForForgetPassword;
   static String? OTP;
+  static double? currentPositionLatitude;
+  static double? currentPositionLongitude;
+  static String? currentOrderOwnerNumber;
+  static String? currentOrderId;
 
 }

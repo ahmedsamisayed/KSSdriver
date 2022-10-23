@@ -11,9 +11,34 @@ import 'newOrer.dart';
 class OrderDriverScreen extends StatefulWidget {
   @override
   _OrderDriverScreenState createState() => _OrderDriverScreenState();
+  var OrdersList;
+  OrderDriverScreen({
+    this.OrdersList
+});
+
 }
+var onProcessingOrders = [];
+var completedOrders = [];
 
 class _OrderDriverScreenState extends State<OrderDriverScreen> {
+  SplitOrders () {
+    List list = widget.OrdersList;
+    onProcessingOrders.clear();
+    completedOrders.clear();
+    list.forEach((n) => {
+      if (n.orderStatus == "Processing") {
+        onProcessingOrders.add(n)
+      }
+      else if (n.orderStatus == "Completed") {
+        completedOrders.add(n)
+      }
+    });}
+  @override
+  void initState() {
+    // TODO: implement initState
+    SplitOrders();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) => DefaultTabController(
         length: 2,
@@ -48,10 +73,27 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
                   child: Column(children: [
                     Container(
                       height: MediaQuery.of(context).size.height / 1.3,
-                      child: ListView.builder(
-                          itemCount: 20,
+                      child: onProcessingOrders.length == 0
+                          ? Center(
+                          child: Text(
+                            'لا توجد طلبات سابقة',
+                            style: TextStyle(
+                              fontFamily: "Tajawal",
+                              fontSize: 20,
+                            ),
+                          ))
+                          :
+                      ListView.builder(
+                          itemCount: onProcessingOrders.length,
                           itemBuilder: (context, i) {
-                            return NewOrderItem("أمنية عبد الحفيظ", "10");
+                            return NewOrderItem("أمنية عبد الحفيظ",
+                                "10",
+                                onProcessingOrders[i].shippingInfo[0].location.latitude,
+                                onProcessingOrders[i].shippingInfo[0].location.longitude,
+                                onProcessingOrders[i].shippingInfo[0].phoneNo1,
+                                onProcessingOrders[i].shippingInfo[0].phoneNo2,
+                                onProcessingOrders[i].shippingInfo[0].sId,
+                            );
                           }),
                     ),
                   ]),
@@ -67,11 +109,23 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
                   child: Column(children: [
                     Container(
                       height: MediaQuery.of(context).size.height / 1.6,
-                      child: ListView.builder(
-                          itemCount: 2,
+                      child: completedOrders.length == 0
+                          ? Center(
+                          child: Text(
+                            'لا توجد طلبات سابقة',
+                            style: TextStyle(
+                              fontFamily: "Tajawal",
+                              fontSize: 20,
+                            ),
+                          ))
+                          :
+                      ListView.builder(
+                          itemCount: completedOrders.length,
                           itemBuilder: (context, i) {
                             return OldOrderItem(
-                                "أمنية عبد الحفيظ", "10", "جبرة");
+                                "أمنية عبد الحفيظ", "10", "جبرة",
+                              completedOrders[i].shippingInfo[0].location.latitude,
+                              completedOrders[i].shippingInfo[0].location.longitude);
                           }),
                     ),
                   ]),

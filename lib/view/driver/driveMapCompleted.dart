@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:kss_driver/model/api/appConstants.dart';
 
 import '../../core/const.dart';
 
+import '../user/order/checker.dart';
 import 'detilsUser.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -31,7 +33,7 @@ late LatLng destinationLocation;
 void setInitialLocation() {
   //googleMapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(15.5983302, 32.5843465), zoom: 14)));
   _markers.clear();
-  _markers.add(Marker(markerId: const MarkerId('currentLocation'),position: LatLng(15.5983302, 32.5843465)));
+  _markers.add(Marker(markerId: const MarkerId('currentLocation'),position: LatLng(AppConstants.currentPositionLatitude!, AppConstants.currentPositionLongitude!)));
   destinationLocation = LatLng(15.5983302, 32.5843465);
 }
 
@@ -51,7 +53,18 @@ class _DriverMapScreenCompletedState extends State<DriverMapScreenCompleted> {
         // tilt: CAMERA_TILT,
         // bearing: CAMERA_BEARING,
         target: destinationLocation);
-    return Directionality(
+    return WillPopScope(
+        onWillPop: () async {
+      final shouldPop = await showDialog<bool>(
+        context: context,
+        builder: (context) {
+          return CheckerForOrderScreen();
+        },
+      );
+      return shouldPop!;
+    },
+    child:
+      Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
           body: Stack(
@@ -80,7 +93,7 @@ class _DriverMapScreenCompletedState extends State<DriverMapScreenCompleted> {
             child: FloatingActionButton(
               heroTag: "btn1",
               onPressed: () {
-                Navigator.of(context).pushNamed('order driver Screen');
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckerForOrderScreen()));
               },
               backgroundColor: Colors.white,
               // ignore: prefer_const_constructors
@@ -90,7 +103,7 @@ class _DriverMapScreenCompletedState extends State<DriverMapScreenCompleted> {
               ),
             ),
           ),
-        ));
+        )));
   }
 
 
