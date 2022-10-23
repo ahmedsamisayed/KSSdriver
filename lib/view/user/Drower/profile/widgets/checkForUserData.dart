@@ -36,7 +36,7 @@ class _CheckerForUpdateUserData extends State<CheckerForUpdateUserData> {
     );}
 
   FutureBuilder buildUpdateUserDataFutureBuilder() {
-    UpdateUserDataResult = updateUserData(widget.name,widget.email);
+    UpdateUserDataResult = updateOrderStatus(context);
     return FutureBuilder(
         future: UpdateUserDataResult,
         builder: (context, snapshot) {

@@ -1,13 +1,17 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore
 
+//import 'dart:js';
+
 import 'package:flutter/material.dart';
+import 'package:kss_driver/model/api/appConstants.dart';
 
 import '../../core/const.dart';
 import '../../core/widgets/custom_buttom.dart';
 import '../../core/widgets/custom_listTile.dart';
+import '../../model/api/updateUserData/udpateUserDataAPI.dart';
 
 // ignore: non_constant_identifier_names
-Widget Details(String name, String Adress) {
+Widget Details(String name, String Adress, BuildContext context) {
   return Positioned(
     bottom: 0,
     left: 2,
@@ -61,6 +65,8 @@ Widget Details(String name, String Adress) {
                   ),
                   CustomMaterialButtom(
                     press: () {
+                      print(AppConstants.currentOrderId);
+                      updateOrderStatus(context);
                       //    Navigator.of(context)
                       //      .pushNamed('Payment');
                     },

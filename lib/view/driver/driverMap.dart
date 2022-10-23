@@ -85,7 +85,7 @@ class _DriverMapScreenState extends State<DriverMapScreen> {
                   },
                 ),
               ),
-              Details("أمنية عبد الحفيظ", "الشهيد طه الماحي"),
+              Details("أمنية عبد الحفيظ", "الشهيد طه الماحي", context),
             ],
           ),
           floatingActionButton: Container(

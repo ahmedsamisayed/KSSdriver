@@ -34,7 +34,7 @@ void setInitialLocation() {
   //googleMapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(15.5983302, 32.5843465), zoom: 14)));
   _markers.clear();
   _markers.add(Marker(markerId: const MarkerId('currentLocation'),position: LatLng(AppConstants.currentPositionLatitude!, AppConstants.currentPositionLongitude!)));
-  destinationLocation = LatLng(15.5983302, 32.5843465);
+  destinationLocation = LatLng(AppConstants.currentPositionLatitude!, AppConstants.currentPositionLongitude!);
 }
 
 class _DriverMapScreenCompletedState extends State<DriverMapScreenCompleted> {

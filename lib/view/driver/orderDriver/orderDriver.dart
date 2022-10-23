@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +31,7 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
       if (n.orderStatus == "Processing") {
         onProcessingOrders.add(n)
       }
-      else if (n.orderStatus == "Completed") {
+      else if (n.orderStatus == "Delivered") {
         completedOrders.add(n)
       }
     });}
@@ -40,7 +42,19 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
     super.initState();
   }
   @override
-  Widget build(BuildContext context) => DefaultTabController(
+  Widget build(BuildContext context) =>
+      WillPopScope(
+          onWillPop: () async {
+            final shouldPop = await showDialog<bool>(
+              context: context,
+              builder: (context) {
+                return exit(0);
+              },
+            );
+            return shouldPop!;
+          },
+          child:
+      DefaultTabController(
         length: 2,
         child: Directionality(
           textDirection: TextDirection.rtl,
@@ -92,7 +106,7 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
                                 onProcessingOrders[i].shippingInfo[0].location.longitude,
                                 onProcessingOrders[i].shippingInfo[0].phoneNo1,
                                 onProcessingOrders[i].shippingInfo[0].phoneNo2,
-                                onProcessingOrders[i].shippingInfo[0].sId,
+                                onProcessingOrders[i].sId,
                             );
                           }),
                     ),
@@ -181,7 +195,7 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
             ),
           ),
         ),
-      );
+      ));
   showAlertDialog(BuildContext context) {
 
     // set up the buttons
