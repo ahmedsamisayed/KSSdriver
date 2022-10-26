@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
@@ -7,6 +8,7 @@ import '../../../../core/const.dart';
 import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_text.dart';
 import '../../../model/api/logOut/logOutAPI.dart';
+import '../../user/order/checker.dart';
 import 'OldOreder.dart';
 import 'newOrer.dart';
 
@@ -22,6 +24,7 @@ class OrderDriverScreen extends StatefulWidget {
 var onProcessingOrders = [];
 var completedOrders = [];
 
+
 class _OrderDriverScreenState extends State<OrderDriverScreen> {
   SplitOrders () {
     List list = widget.OrdersList;
@@ -35,11 +38,19 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
         completedOrders.add(n)
       }
     });}
+  Timer? timer;
   @override
   void initState() {
     // TODO: implement initState
+    timer = Timer.periodic(Duration(seconds: 30), (Timer t) => CheckerForOrderScreen());
     SplitOrders();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) =>

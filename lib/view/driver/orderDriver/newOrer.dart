@@ -15,6 +15,7 @@ class NewOrderItem extends StatelessWidget {
   final orderOwnerNumber;
   final orderOwnerNumber2;
   final orderId;
+  bool borderColor = false;
   NewOrderItem(this.name, this.OrderNumber, this.orderLatitude, this.orderLongitude,
       this.orderOwnerNumber,
       this.orderOwnerNumber2,
@@ -24,6 +25,7 @@ class NewOrderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        borderColor = true;
         AppConstants.currentPositionLatitude = orderLatitude;
         AppConstants.currentPositionLongitude = orderLongitude;
         AppConstants.currentOrderId = orderId;
@@ -35,7 +37,9 @@ class NewOrderItem extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                  color: Primarycolor,
+                  color:  borderColor == false
+                  ? Primarycolor
+                  : Colors.deepOrangeAccent,
                   width: 2,
                 )),
             child: Padding(

@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:kss_driver/model/api/getOrders/getOrdersAPI.dart';
 import 'package:kss_driver/view/user/order/order.dart';
 
+import '../../../model/api/appConstants.dart';
+import '../../../model/api/getDriverOrders/getOrdersAPI.dart';
+import '../../../model/api/getDriverOrders/getOrdersREsponse.dart';
 import '../../../model/api/getOrders/getOrdersResponse.dart';
 import '../../../model/api/getOrders/orderModule.dart';
+import '../../../model/api/getSingleOrder/getSingleOrderAPI.dart';
 import '../../driver/orderDriver/orderDriver.dart';
 
 class CheckerForOrderScreen extends StatefulWidget {
@@ -15,7 +19,7 @@ class CheckerForOrderScreen extends StatefulWidget {
 }
 
 class _CheckerForOrderScreenState extends State<CheckerForOrderScreen> {
-  Future<GetOrdersResponse> getOrdersResult = getOrders();
+  Future<GetDeliveries> getOrdersResult = getDriverOrders();
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +29,29 @@ class _CheckerForOrderScreenState extends State<CheckerForOrderScreen> {
       ),
     );}
 
-   FutureBuilder<GetOrdersResponse> buildGetOrdersFutureBuilder() {
-     return FutureBuilder<GetOrdersResponse>(
+   FutureBuilder<GetDeliveries> buildGetOrdersFutureBuilder() {
+     return FutureBuilder<GetDeliveries>(
          future: getOrdersResult,
          builder: (context, snapshot) {
            if (snapshot.hasData) {
              WidgetsBinding.instance.addPostFrameCallback((_) {
 
+               AppConstants.driverDeliveries = snapshot.data!.deliveries;
+               var ordersResponse;
+               var orders;
+               //onProcessingOrders.clear();
+               //completedOrders.clear();
+               AppConstants.driverDeliveries!.forEach((n) => {
+                 ordersResponse!.add(getSingleOrder(n.order)),
+               });
+               ordersResponse!.forEach((element) {
+                 orders.add(ordersResponse.order);
+               });
+
                Navigator.of(context).push( MaterialPageRoute(
                    builder: (context) => OrderDriverScreen(
                      ///pass value
-                     OrdersList: snapshot.data!.orders,
+                     OrdersList: orders
 
                    )));
              }

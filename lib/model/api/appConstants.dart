@@ -16,5 +16,6 @@ class AppConstants{
   static double? currentPositionLongitude;
   static String? currentOrderOwnerNumber;
   static String? currentOrderId;
+  static List? driverDeliveries;
 
 }
