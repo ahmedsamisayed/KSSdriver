@@ -3,7 +3,9 @@
 //import 'dart:js';
 
 import 'package:flutter/material.dart';
+import 'package:kss_driver/core/widgets/scaffoldSnackbar.dart';
 import 'package:kss_driver/model/api/appConstants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/const.dart';
 import '../../core/widgets/custom_buttom.dart';
@@ -65,7 +67,6 @@ Widget Details(String name, String Adress, BuildContext context) {
                   ),
                   CustomMaterialButtom(
                     press: () {
-                      print(AppConstants.currentOrderId);
                       updateOrderStatus(context);
                       //    Navigator.of(context)
                       //      .pushNamed('Payment');
@@ -82,7 +83,7 @@ Widget Details(String name, String Adress, BuildContext context) {
             child: FloatingActionButton(
                 heroTag: "btn2",
               onPressed: () {
-
+                showAlertDialog(context);
               },
               backgroundColor: Colors.white,
               child: Icon(
@@ -92,5 +93,62 @@ Widget Details(String name, String Adress, BuildContext context) {
             ),
           ),
         ])),
+  );
+}
+showAlertDialog(BuildContext context) {
+
+  // set up the buttons
+  // Widget callFirstNumber = TextButton(
+  //   child: Text("لا"),
+  //   onPressed:  () {
+  //
+  //   },
+  // );
+  // Widget callSecondNumber = TextButton(
+  //   child: Text("نعم"),
+  //   onPressed:  () {
+  //   },
+  // );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("الأتصال بصاحب الطلب"),
+    content: Center(
+      child: Container(
+        height: 100,
+        child: Column(
+          children: [
+            TextButton(onPressed: () async {
+              if (await canLaunchUrl(Uri.parse('tel:0${AppConstants.currentOrderOwnerNumber1}'))) {
+                launchUrl(Uri.parse('tel:${AppConstants.currentOrderOwnerNumber1}'));
+              } else {
+                showScaffoldSnackBar('can_not_launch 0${AppConstants.currentOrderOwnerNumber1}', context);
+
+                //showCustomSnackBar('${'can_not_launch'.tr} ${Get.find<SplashController>().configModel.phone}');
+              }
+            }, child: Text('0${AppConstants.currentOrderOwnerNumber1}')),
+            SizedBox(height: 2,),
+            TextButton(onPressed: () async {
+              if (await canLaunchUrl(Uri.parse('tel:${AppConstants.currentOrderOwnerNumber2}'))) {
+                launchUrl(Uri.parse('tel:${AppConstants.currentOrderOwnerNumber2}'));
+              } else {
+                showScaffoldSnackBar('can_not_launch ${AppConstants.currentOrderOwnerNumber2}', context);
+
+                //showCustomSnackBar('${'can_not_launch'.tr} ${Get.find<SplashController>().configModel.phone}');
+              }
+            }, child: Text('0${AppConstants.currentOrderOwnerNumber2}')),
+          ],
+        ),
+      ),
+    ),
+
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
   );
 }

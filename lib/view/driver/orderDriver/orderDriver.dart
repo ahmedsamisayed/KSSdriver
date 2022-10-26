@@ -42,14 +42,14 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    timer = Timer.periodic(Duration(seconds: 30), (Timer t) => CheckerForOrderScreen());
+    //timer = Timer.periodic(Duration(seconds: 30), (Timer t) => CheckerForOrderScreen());
     SplitOrders();
     super.initState();
   }
 
   @override
   void dispose() {
-    timer?.cancel();
+    //timer?.cancel();
     super.dispose();
   }
   @override
@@ -118,6 +118,7 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
                                 onProcessingOrders[i].shippingInfo[0].phoneNo1,
                                 onProcessingOrders[i].shippingInfo[0].phoneNo2,
                                 onProcessingOrders[i].sId,
+                                onProcessingOrders[i].shippingInfo[0].address
                             );
                           }),
                     ),
@@ -148,7 +149,9 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
                           itemCount: completedOrders.length,
                           itemBuilder: (context, i) {
                             return OldOrderItem(
-                                "أمنية عبد الحفيظ", "10", "جبرة",
+                                "أمنية عبد الحفيظ",
+                                "10",
+                                completedOrders[i].shippingInfo[0].address,
                               completedOrders[i].shippingInfo[0].location.latitude,
                               completedOrders[i].shippingInfo[0].location.longitude);
                           }),

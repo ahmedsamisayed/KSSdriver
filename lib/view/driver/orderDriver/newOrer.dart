@@ -5,10 +5,12 @@ import 'package:kss_driver/model/api/appConstants.dart';
 import '../../../core/const.dart';
 import '../../../core/utils/size_config.dart';
 import '../../../core/widgets/custom_text.dart';
+import '../driverMap.dart';
 
 class NewOrderItem extends StatelessWidget {
   //const ({ Key? key }) : super(key: key);
   final name;
+  final address;
   final OrderNumber;
   final orderLatitude;
   final orderLongitude;
@@ -19,7 +21,9 @@ class NewOrderItem extends StatelessWidget {
   NewOrderItem(this.name, this.OrderNumber, this.orderLatitude, this.orderLongitude,
       this.orderOwnerNumber,
       this.orderOwnerNumber2,
-      this.orderId);
+      this.orderId,
+      this.address
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,12 @@ class NewOrderItem extends StatelessWidget {
         AppConstants.currentPositionLatitude = orderLatitude;
         AppConstants.currentPositionLongitude = orderLongitude;
         AppConstants.currentOrderId = orderId;
-        Navigator.of(context).pushNamed('DriverMapScreen');
+        AppConstants.currentOrderOwnerNumber1 = orderOwnerNumber;
+        AppConstants.currentOrderOwnerNumber2 = orderOwnerNumber2;
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => DriverMapScreen(
+          name: name,
+          address: address,
+        )));
       },
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 10),

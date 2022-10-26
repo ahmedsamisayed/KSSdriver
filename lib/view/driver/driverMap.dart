@@ -18,6 +18,14 @@ const double CAMERA_TILT = 80;
 const double CAMERA_BEARING = 30;
 
 class DriverMapScreen extends StatefulWidget {
+  var name;
+  var address;
+  DriverMapScreen(
+  {
+    this.name,
+    this.address
+}
+      );
   @override
   _DriverMapScreenState createState() => _DriverMapScreenState();
 }
@@ -85,7 +93,7 @@ class _DriverMapScreenState extends State<DriverMapScreen> {
                   },
                 ),
               ),
-              Details("أمنية عبد الحفيظ", "الشهيد طه الماحي", context),
+              Details(widget.name, widget.address, context),
             ],
           ),
           floatingActionButton: Container(

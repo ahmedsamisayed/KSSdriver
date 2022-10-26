@@ -1,4 +1,5 @@
 import 'package:image_picker/image_picker.dart';
+import 'package:kss_driver/model/api/getSingleOrder/getSingleOrderResponse.dart';
 
 class AppConstants{
   static String? userAccessToken;
@@ -14,8 +15,10 @@ class AppConstants{
   static String? OTP;
   static double? currentPositionLatitude;
   static double? currentPositionLongitude;
-  static String? currentOrderOwnerNumber;
+  static String? currentOrderOwnerNumber1;
+  static String? currentOrderOwnerNumber2;
   static String? currentOrderId;
   static List? driverDeliveries;
+  static List driverOrders = [];
 
 }

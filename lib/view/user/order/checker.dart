@@ -9,6 +9,7 @@ import '../../../model/api/getDriverOrders/getOrdersREsponse.dart';
 import '../../../model/api/getOrders/getOrdersResponse.dart';
 import '../../../model/api/getOrders/orderModule.dart';
 import '../../../model/api/getSingleOrder/getSingleOrderAPI.dart';
+import '../../../model/api/getSingleOrder/getSingleOrderResponse.dart';
 import '../../driver/orderDriver/orderDriver.dart';
 
 class CheckerForOrderScreen extends StatefulWidget {
@@ -30,30 +31,20 @@ class _CheckerForOrderScreenState extends State<CheckerForOrderScreen> {
     );}
 
    FutureBuilder<GetDeliveries> buildGetOrdersFutureBuilder() {
+    var b = [];
+    var a = [];
      return FutureBuilder<GetDeliveries>(
          future: getOrdersResult,
          builder: (context, snapshot) {
            if (snapshot.hasData) {
+
+
              WidgetsBinding.instance.addPostFrameCallback((_) {
-
-               AppConstants.driverDeliveries = snapshot.data!.deliveries;
-               var ordersResponse;
-               var orders;
-               //onProcessingOrders.clear();
-               //completedOrders.clear();
-               AppConstants.driverDeliveries!.forEach((n) => {
-                 ordersResponse!.add(getSingleOrder(n.order)),
+               snapshot.data!.deliveries!.forEach((n) {
+                 a.add(n.order.toString());
                });
-               ordersResponse!.forEach((element) {
-                 orders.add(ordersResponse.order);
-               });
+                getOrderById(a, context);
 
-               Navigator.of(context).push( MaterialPageRoute(
-                   builder: (context) => OrderDriverScreen(
-                     ///pass value
-                     OrdersList: orders
-
-                   )));
              }
              );
              return CircularProgressIndicator();
