@@ -119,14 +119,14 @@ showAlertDialog(BuildContext context) {
         child: Column(
           children: [
             TextButton(onPressed: () async {
-              if (await canLaunchUrl(Uri.parse('tel:0${AppConstants.currentOrderOwnerNumber1}'))) {
+              if (await canLaunchUrl(Uri.parse('tel:${AppConstants.currentOrderOwnerNumber1}'))) {
                 launchUrl(Uri.parse('tel:${AppConstants.currentOrderOwnerNumber1}'));
               } else {
-                showScaffoldSnackBar('can_not_launch 0${AppConstants.currentOrderOwnerNumber1}', context);
+                showScaffoldSnackBar('can_not_launch ${AppConstants.currentOrderOwnerNumber1}', context);
 
                 //showCustomSnackBar('${'can_not_launch'.tr} ${Get.find<SplashController>().configModel.phone}');
               }
-            }, child: Text('0${AppConstants.currentOrderOwnerNumber1}')),
+            }, child: Text('${AppConstants.currentOrderOwnerNumber1}')),
             SizedBox(height: 2,),
             TextButton(onPressed: () async {
               if (await canLaunchUrl(Uri.parse('tel:${AppConstants.currentOrderOwnerNumber2}'))) {
@@ -136,7 +136,7 @@ showAlertDialog(BuildContext context) {
 
                 //showCustomSnackBar('${'can_not_launch'.tr} ${Get.find<SplashController>().configModel.phone}');
               }
-            }, child: Text('0${AppConstants.currentOrderOwnerNumber2}')),
+            }, child: Text('${AppConstants.currentOrderOwnerNumber2}')),
           ],
         ),
       ),

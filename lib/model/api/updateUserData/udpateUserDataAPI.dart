@@ -5,7 +5,6 @@ import 'package:kss_driver/core/widgets/scaffoldSnackbar.dart';
 import 'package:kss_driver/model/api/appConstants.dart';
 
 import 'dart:convert';
-import 'package:kss_driver/model/api/infos/infoResponseModule.dart';
 
 import '../../../view/user/order/checker.dart';
 

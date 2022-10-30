@@ -11,8 +11,6 @@ import '../../core/widgets/custom_Text_field_phone.dart';
 import '../../core/widgets/custom_buttom.dart';
 import '../../core/widgets/custom_flatbuttom.dart';
 import '../../model/api/login/loginAPI.dart';
-import '../user/Drower/profile/widgets/checkForUserData.dart';
-import 'checkForLogin.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

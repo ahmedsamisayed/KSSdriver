@@ -1,4 +1,3 @@
-import 'package:image_picker/image_picker.dart';
 import 'package:kss_driver/model/api/getSingleOrder/getSingleOrderResponse.dart';
 
 class AppConstants{
@@ -7,7 +6,6 @@ class AppConstants{
   static String? userName;
   static String? userEmail;
   static String? userPhone;
-  static late XFile uplodedImage;
   static String generalUrl = "http://192.168.43.198:4000/api/v1";
   static String productImageurl = "http://192.168.43.198:4000/assets/productImages";
   static String? bokNumber;

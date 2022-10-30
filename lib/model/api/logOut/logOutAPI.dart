@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
 import 'package:kss_driver/core/widgets/scaffoldSnackbar.dart';
-import 'package:kss_driver/model/api/fullCowDetails.dart';
 import 'dart:convert';
-import 'package:kss_driver/model/api/products/productResponse.dart';
 
 import '../appConstants.dart';
 import 'logOutModule.dart';
