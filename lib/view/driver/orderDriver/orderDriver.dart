@@ -42,7 +42,8 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    //timer = Timer.periodic(Duration(seconds: 30), (Timer t) => CheckerForOrderScreen());
+    //timer = Timer.periodic(Duration(seconds: 10), (Timer t) => Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckerForOrderScreen())));
+
     SplitOrders();
     super.initState();
   }
@@ -153,7 +154,8 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
                                 "10",
                                 completedOrders[i].shippingInfo[0].address,
                               completedOrders[i].shippingInfo[0].location.latitude,
-                              completedOrders[i].shippingInfo[0].location.longitude);
+                              completedOrders[i].shippingInfo[0].location.longitude,
+                              completedOrders[i].orderItems);
                           }),
                     ),
                   ]),

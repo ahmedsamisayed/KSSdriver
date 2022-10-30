@@ -13,8 +13,6 @@ Future<void> getOrderById (List a, BuildContext context) async{
   for(String x in a){
     await getSingleOrder(x);
   };
-
-  print(AppConstants.driverOrders[0].orderStatus);
   Navigator.of(context).push( MaterialPageRoute(
       builder: (context) => OrderDriverScreen(
         ///pass value

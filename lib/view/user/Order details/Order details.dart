@@ -93,21 +93,6 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                     color: Primarycolor,
                                   ),
                                 ]),
-                                // for (int i = 0; i < 2; i++)
-                                //   new TableRow(children: [
-                                //     CustomText(
-                                //       text: "خروف",
-                                //     ),
-                                //     CustomText(
-                                //       text: "1",
-                                //     ),
-                                //   ]),
-                                // TableRow(children: [
-                                //   CustomText(
-                                //     text: "",
-                                //   ),
-                                //   CustomText(text: ''),
-                                // ]),
                                 TableRow(children: [
                                   CustomText(
                                     text: 'السعر الإجمالي',

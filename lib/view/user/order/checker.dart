@@ -40,11 +40,22 @@ class _CheckerForOrderScreenState extends State<CheckerForOrderScreen> {
 
 
              WidgetsBinding.instance.addPostFrameCallback((_) {
-               snapshot.data!.deliveries!.forEach((n) {
-                 a.add(n.order.toString());
-               });
-                getOrderById(a, context);
+               a.clear();
+               AppConstants.driverOrders.clear();
+               if (snapshot.data!.deliveries == null)
+                 {
+                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => OrderDriverScreen(
+                     ///pass value
+                       OrdersList: AppConstants.driverOrders
 
+                   )));
+                 }
+               else {
+                 snapshot.data!.deliveries!.forEach((n) {
+                   a.add(n.order.toString());
+                 });
+                 getOrderById(a, context);
+               }
              }
              );
              return CircularProgressIndicator();

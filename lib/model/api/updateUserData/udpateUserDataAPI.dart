@@ -18,7 +18,7 @@ Future updateOrderStatus(BuildContext context) async {
       'Cookie': 'token=${AppConstants.userAccessToken}',
       'Content-Type': 'application/json',
     },
-    body: jsonEncode(<String, String>{'status': "Delivered"}),
+    body: jsonEncode(<String, String>{'orderStatus': "Delivered"}),
   );
   if (response.statusCode == 200) {
     showScaffoldSnackBar('Done', context);
