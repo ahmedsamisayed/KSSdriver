@@ -27,15 +27,15 @@ class GetDeliveries {
 class Deliveries {
   String? sId;
   String? user;
-  String? orderid;
+  String? order;
   int? iV;
 
-  Deliveries({this.sId, this.user, this.orderid, this.iV});
+  Deliveries({this.sId, this.user, this.order, this.iV});
 
   Deliveries.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
     user = json['user'];
-    orderid = json['orderid'];
+    order = json['order'];
     iV = json['__v'];
   }
 
@@ -43,7 +43,7 @@ class Deliveries {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['_id'] = this.sId;
     data['user'] = this.user;
-    data['orderid'] = this.orderid;
+    data['order'] = this.order;
     data['__v'] = this.iV;
     return data;
   }

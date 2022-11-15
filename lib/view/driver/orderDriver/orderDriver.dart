@@ -112,8 +112,8 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
                       ListView.builder(
                           itemCount: onProcessingOrders.length,
                           itemBuilder: (context, i) {
-                            return NewOrderItem("أمنية عبد الحفيظ",
-                                "10",
+                            return NewOrderItem(onProcessingOrders[i].shippingInfo[0].userName,
+                                onProcessingOrders[i].num.toString(),
                                 onProcessingOrders[i].shippingInfo[0].location.latitude,
                                 onProcessingOrders[i].shippingInfo[0].location.longitude,
                                 onProcessingOrders[i].shippingInfo[0].phoneNo1,
@@ -150,8 +150,8 @@ class _OrderDriverScreenState extends State<OrderDriverScreen> {
                           itemCount: completedOrders.length,
                           itemBuilder: (context, i) {
                             return OldOrderItem(
-                                "أمنية عبد الحفيظ",
-                                "10",
+                                completedOrders[i].shippingInfo[0].userName,
+                                completedOrders[i].num.toString(),
                                 completedOrders[i].shippingInfo[0].address,
                               completedOrders[i].shippingInfo[0].location.latitude,
                               completedOrders[i].shippingInfo[0].location.longitude,

@@ -48,7 +48,7 @@ class _CheckerForOrderScreenState extends State<CheckerForOrderScreen> {
                  }
                else {
                  snapshot.data!.deliveries!.forEach((n) {
-                   a.add(n.orderid.toString());
+                   a.add(n.order.toString());
                  });
                  getOrderById(a, context);
                }

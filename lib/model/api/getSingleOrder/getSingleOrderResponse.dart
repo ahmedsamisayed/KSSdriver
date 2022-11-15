@@ -25,6 +25,7 @@ class Order {
   List<ShippingInfo>? shippingInfo;
   User? user;
   List<OrderItems>? orderItems;
+  int? num;
   String? orderStatus;
   String? createdAt;
   int? iV;
@@ -35,6 +36,7 @@ class Order {
         this.shippingInfo,
         this.user,
         this.orderItems,
+        this.num,
         this.orderStatus,
         this.createdAt,
         this.iV});
@@ -57,6 +59,7 @@ class Order {
         orderItems!.add(new OrderItems.fromJson(v));
       });
     }
+    num = json['num'];
     orderStatus = json['orderStatus'];
     createdAt = json['createdAt'];
     iV = json['__v'];
@@ -77,6 +80,7 @@ class Order {
     if (this.orderItems != null) {
       data['orderItems'] = this.orderItems!.map((v) => v.toJson()).toList();
     }
+    data['num'] = this.num;
     data['orderStatus'] = this.orderStatus;
     data['createdAt'] = this.createdAt;
     data['__v'] = this.iV;
@@ -102,18 +106,25 @@ class BokImage {
 
 class ShippingInfo {
   Location? location;
+  String? userName;
   String? address;
   String? phoneNo1;
   String? phoneNo2;
   String? sId;
 
   ShippingInfo(
-      {this.location, this.address, this.phoneNo1, this.phoneNo2, this.sId});
+      {this.location,
+        this.userName,
+        this.address,
+        this.phoneNo1,
+        this.phoneNo2,
+        this.sId});
 
   ShippingInfo.fromJson(Map<String, dynamic> json) {
     location = json['location'] != null
         ? new Location.fromJson(json['location'])
         : null;
+    userName = json['userName'];
     address = json['address'];
     phoneNo1 = json['phoneNo1'];
     phoneNo2 = json['phoneNo2'];
@@ -125,6 +136,7 @@ class ShippingInfo {
     if (this.location != null) {
       data['location'] = this.location!.toJson();
     }
+    data['userName'] = this.userName;
     data['address'] = this.address;
     data['phoneNo1'] = this.phoneNo1;
     data['phoneNo2'] = this.phoneNo2;
