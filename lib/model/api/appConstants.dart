@@ -18,5 +18,6 @@ class AppConstants{
   static String? currentOrderId;
   static List? driverDeliveries;
   static List driverOrders = [];
+  static bool reSendOTP = false;
 
 }

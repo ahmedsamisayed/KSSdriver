@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kss_driver/model/api/appConstants.dart';
 import 'package:kss_driver/view/auth/OTP/widgets/Text_Form_Filed.dart';
 
 import '../../../../core/const.dart';
@@ -6,6 +7,7 @@ import '../../../../core/const.dart';
 import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_buttom.dart';
 import '../../../../core/widgets/custom_text.dart';
+import '../../../../model/api/forgetPassword/forgetApi.dart';
 import '../../../../model/api/postOTPForForget/postOTPAPI.dart';
 import 'biiuld_Timer.dart';
 import 'package:telephony/telephony.dart';
@@ -33,6 +35,9 @@ class _OtpFormState extends State<OtpForm> {
   TextEditingController?  otp4;
   @override
   void initState() {
+    // TODO: implement initState
+    //timer = Timer.periodic(Duration(seconds: 10), (Timer t) => Navigator.of(context).push(MaterialPageRoute(builder: (context) => CheckerForOrderScreen())));
+
     super.initState();
     telephony.listenIncomingSms(
         onNewMessage: (SmsMessage message) {
@@ -84,6 +89,8 @@ class _OtpFormState extends State<OtpForm> {
     PostOTP( OTP,  context);
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -134,14 +141,19 @@ class _OtpFormState extends State<OtpForm> {
           GestureDetector(
             onTap: () {
               // OTP code resend
-              Navigator.pushNamed(context, "OTP Screen");
-            },
-            // child: CustomMaterialButtom(
-            //     text: "إعادة إرسال",
-            //     press: () {
-            //       Navigator.of(context).pushNamed('OTP Screen');
-            //
-            //     }),
+
+              if (AppConstants.reSendOTP) {
+                //Navigator.pushNamed(context, "OTP Screen");
+                AppConstants.reSendOTP = false;
+                ForgetPassword(AppConstants.userPhoneForForgetPassword!,context);
+              }
+              },
+          //   // child: CustomMaterialButtom(
+          //   //     text: "إعادة إرسال",
+          //   //     press: () {
+          //   //       Navigator.of(context).pushNamed('OTP Screen');
+          //   //
+          //   //     }),
             child: CustomText(
               text: "إعادة إرسال",
               fontSize: 15,
