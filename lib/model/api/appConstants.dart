@@ -6,8 +6,8 @@ class AppConstants{
   static String? userName;
   static String? userEmail;
   static String? userPhone;
-  static String generalUrl = "http://192.168.43.198:4000/api/v1";
-  static String productImageurl = "http://192.168.43.198:4000/assets/productImages";
+  static String generalUrl = "http://212.0.148.6:4000/api/v1";
+  static String productImageurl = "http://212.0.148.6:4000/assets/productImages";
   static String? bokNumber;
   static String? userPhoneForForgetPassword;
   static String? OTP;
